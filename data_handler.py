@@ -4,7 +4,7 @@ from initial_values import RUN_NUM
 import matplotlib.pyplot as plt
 import os
 
-BASEDIR = dir_path = os.path.dirname(os.path.realpath(__file__))
+BASEDIR = os.path.dirname(os.path.realpath(__file__))
 DATADIR = os.path.join(BASEDIR, 'datapoints.csv')
 
 

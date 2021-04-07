@@ -5,7 +5,7 @@ Usage:
 ## create a virtual environment
 ### open a terminal in the project directory
 ```python3 -m venv venv```
-#### if venv is not installed
+###### if venv is not installed
 ```pip install venv```
 ### activate venv
 ###### windows cmd

@@ -34,7 +34,7 @@ for i in range(100000):
     MUON_E_e.append(MUON.E_e)
 
 ax2.hist(MUON_E_e, bins=100)
-ax2.set_ylabel(r'quantity of $E_e$')
+ax2.set_ylabel(r'Quantity of $E_e$')
 ax2.set_xlabel(r'$E_e$')
 plt.tight_layout()
 plt.show()

@@ -11,15 +11,18 @@ DATADIR = os.path.join(BASEDIR, 'datapoints.csv')
 def plot_data():
     x = []
     y = []
+    y_factored = []
     with open(DATADIR) as f:
         data = genfromtxt(f, delimiter=',')
         for i in data:
             # print(i)
             x.append(i[0])
-            y.append(i[1] * RUN_NUM / 43)
+            y.append(i[1])
         # print(a)
         # print(y)
 
-    error_bar = lambda a: np.sqrt(a)
+    def error_bar(a):
+        return np.sqrt(a)
+
     for i, j in zip(x, y):
-        plt.errorbar(i, j, fmt="ok", yerr=error_bar(j * RUN_NUM / 43))
+        plt.errorbar(i, j * RUN_NUM / 43, fmt="ok", yerr=error_bar(j) * (RUN_NUM / 43))

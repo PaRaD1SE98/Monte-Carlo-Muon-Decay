@@ -6,12 +6,12 @@ import os
 
 BASEDIR = os.path.dirname(os.path.realpath(__file__))
 DATADIR = os.path.join(BASEDIR, 'datapoints.csv')
+DATASET_NUM = 43
 
 
 def plot_data():
     x = []
     y = []
-    y_factored = []
     with open(DATADIR) as f:
         data = genfromtxt(f, delimiter=',')
         for i in data:
@@ -25,4 +25,4 @@ def plot_data():
         return np.sqrt(a)
 
     for i, j in zip(x, y):
-        plt.errorbar(i, j * RUN_NUM / 43, fmt="ok", yerr=error_bar(j) * (RUN_NUM / 43))
+        plt.errorbar(i, j * RUN_NUM / DATASET_NUM, fmt="ok", yerr=error_bar(j) * (RUN_NUM / DATASET_NUM))

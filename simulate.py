@@ -84,7 +84,7 @@ if __name__ == '__main__':
     print('\033[32mthe number of times it didn`t decay:\033[0m{}'.format(MUON_DATA_N_S.count(0)))
     print('\033[32mthe number of times for each event:\033[0m{}'.format(sorted_data))
     plot = plt.bar(BAR_NUM, BAR_QUAN, 1)
-    plt.bar_label(plot)
+    plt.bar_label(plot, label_type='center')
     plt.xlabel('Number of Sparks')
     plt.ylabel('Number of Muon Decays')
     plot_data()

@@ -17,9 +17,9 @@ def plot_data():
             # print(i)
             x.append(i[0])
             y.append(i[1] * RUN_NUM / 43)
-        # print(x)
+        # print(a)
         # print(y)
 
-    errorbar = lambda x: np.sqrt(x)
+    error_bar = lambda a: np.sqrt(a)
     for i, j in zip(x, y):
-        plt.errorbar(i, j, fmt="ok", yerr=errorbar(j * RUN_NUM / 43))
+        plt.errorbar(i, j, fmt="ok", yerr=error_bar(j * RUN_NUM / 43))

@@ -26,3 +26,8 @@ def plot_data():
 
     for i, j in zip(x, y):
         plt.errorbar(i, j * RUN_NUM / DATASET_NUM, fmt="ok", yerr=error_bar(j) * (RUN_NUM / DATASET_NUM))
+
+
+if __name__ == '__main__':
+    plot_data()
+    plt.show()

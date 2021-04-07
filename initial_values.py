@@ -8,7 +8,7 @@ E_crit = 45  # MeV
 R = 7.62  # cm
 t_plate = 0.9525  # cm
 t_gap = 0.635  # cm
-plate_num = 21
+# plate_num = 21
 
 # MUON
 mu_c2 = 100  # MeV

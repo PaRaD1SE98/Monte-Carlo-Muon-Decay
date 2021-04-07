@@ -2,12 +2,16 @@ from numpy import genfromtxt
 import numpy as np
 from initial_values import RUN_NUM
 import matplotlib.pyplot as plt
+import os
+
+BASEDIR = dir_path = os.path.dirname(os.path.realpath(__file__))
+DATADIR = os.path.join(BASEDIR, 'datapoints.csv')
 
 
 def plot_data():
     x = []
     y = []
-    with open('/home/parad1se/PycharmProjects/MonteCarloMuonMass/datapoints.csv') as f:
+    with open(DATADIR) as f:
         data = genfromtxt(f, delimiter=',')
         for i in data:
             # print(i)

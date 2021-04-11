@@ -1,5 +1,6 @@
 """Set the initial values here"""
 
+
 # CONST
 X0 = 8.9  # cm
 E_crit = 45  # MeV

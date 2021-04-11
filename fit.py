@@ -17,16 +17,6 @@ def data():
     return x, y
 
 
-def sim(m):
-    x = []
-    y = []
-    s = simulate(m)
-    for i in s:
-        x.append(i)
-        y.append(s[i])
-    return x, y
-
-
 def plot_residual(m):
     d = {}
     for i, j in zip(data()[0], data()[1]):
@@ -41,12 +31,12 @@ def plot_residual(m):
     for j in s:
         if j in rx:
             ry.append((s[j] - d[j]) ** 2)
-        else:
-            ry.append(0)
+        # else:
+        #     ry.append(0)
     for k in d:
         if k not in s:
-            ry.append(1)
-    count = ry.count(1)
+            ry.append(0)
+    count = ry.count(0)
     # print(count)
     for i in range(count):
         # print(i)

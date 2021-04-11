@@ -25,9 +25,14 @@ def plot_data():
         return np.sqrt(a)
 
     for i, j in zip(x, y):
+        # plt.errorbar(i, j, fmt="ok", yerr=error_bar(j))
         plt.errorbar(i, j * RUN_NUM / DATASET_NUM, fmt="ok", yerr=error_bar(j) * (RUN_NUM / DATASET_NUM))
 
 
 if __name__ == '__main__':
     plot_data()
+    plt.xlabel('Number of Sparks')
+    # plt.ylabel(fr'Number of Muon Decays $x{int(1)}$')
+    plt.ylabel(fr'Number of Muon Decays $x{int(RUN_NUM/DATASET_NUM)}$')
+    plt.tight_layout()
     plt.show()

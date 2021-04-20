@@ -10,11 +10,10 @@ def P_E_e_initial(E_e):
 
 li = []
 li_value = []
-n = 5000
+n = int(mu_c2 / 2)
 for i in range(1, n + 1):
-    li.append(i / (n / 50))
-    li_value.append(P_E_e(i / (n / 50)))
-    # li_value.append(P_E_e_initial(i / (n / 50)))
+    li.append(i)
+    li_value.append(P_E_e(i))
 MAX = max(li_value)
 
 ax1 = plt.subplot(211)

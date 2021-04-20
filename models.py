@@ -3,27 +3,6 @@ from initial_values import *
 from scipy.integrate import quad
 
 
-def max_p():
-    li = []
-    li_value = []
-    n = 5000
-    for i in range(1, n + 1):
-        li.append(i / (n / 50))
-        li_value.append(P_E_e(i / (n / 50)))
-    # print(max(li_value))
-    return max(li_value)
-
-
-def generate_valid_E_e(mu_c2):
-    E_e = float(random.randrange(0, mu_c2 / 2 * 10000)) / 10000
-    random_seed = random.uniform(0, 0.04)
-    while random_seed > P_E_e(E_e):
-        # print(E_e, random_seed, P_E_e(E_e))
-        E_e = float(random.randrange(0, mu_c2 / 2 * 10000)) / 10000
-        random_seed = random.uniform(0, 0.04)
-    return E_e
-
-
 def P_E_e(E_e):
     Ee = E_e
 
@@ -33,6 +12,30 @@ def P_E_e(E_e):
     i = quad(P_E_e_initial, 0, mu_c2 / 2)[0]
     c = 1 / i
     return c * P_E_e_initial(E_e=Ee)
+
+
+def max_p():
+    li_value = []
+    n = int(mu_c2 / 2)
+    for i in range(1, n + 1):
+        li_value.append(P_E_e(i))
+    return max(li_value)
+
+
+MAX_P = max_p()
+
+if __name__ == '__main__':
+    print(MAX_P)
+
+
+def generate_valid_E_e(mu_c2):
+    E_e = float(random.randrange(0, int(mu_c2 / 2 * 10000))) / 10000
+    random_seed = random.uniform(0, MAX_P)
+    while random_seed > P_E_e(E_e):
+        # print(E_e, random_seed, P_E_e(E_e))
+        E_e = float(random.randrange(0, int(mu_c2 / 2 * 10000))) / 10000
+        random_seed = random.uniform(0, MAX_P)
+    return E_e
 
 
 class MuonDecay:

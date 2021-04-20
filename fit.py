@@ -1,7 +1,7 @@
 from data_handler import DATADIR, DATASET_NUM
 from numpy import genfromtxt
 import matplotlib.pyplot as plt
-from initial_values import RUN_NUM
+from initial_values import RUN_NUM, START, STOP, INTERVAL
 from simulate import simulate
 import numpy as np
 
@@ -17,13 +17,24 @@ def data():
     return x, y
 
 
+def total_error():
+    error = []
+    for i in data()[1]:
+        error.append(np.sqrt(i * RUN_NUM / DATASET_NUM))
+    total = sum(error) ** 2
+    return total
+
+
+print('errorbar:', total_error())
+
+
 def plot_residual(m):
     d = {}
     for i, j in zip(data()[0], data()[1]):
         d[int(i)] = int(j)
     s = simulate(m)
-    print(d)
-    print(s)
+    # print(d)
+    # print(s)
     rx = []
     ry = []
     for i in d:
@@ -42,18 +53,27 @@ def plot_residual(m):
         # print(i)
         ry[-(i + 1)] = (d[len(d) + 2 - i]) ** 2
     sum_r = sum(ry)
-    print(rx)
-    print(ry)
-    print(sum_r)
+    # print(rx)
+    # print(ry)
+    # print(sum_r)
     return sum_r
 
 
+DATA_POINTS = int((STOP - START) / INTERVAL + 1)
+
+
 def draw():
-    m = np.linspace(60, 140, 17)
+    print('total points:', DATA_POINTS)
+    m = np.linspace(START, STOP, DATA_POINTS)
     r = []
+    current_point = 0
     for i in m:
         r.append(plot_residual(i))
-    plt.plot(m, r, '-ok')
+        current_point += 1
+        print('\rcurrent point:', current_point, end='')
+    print('\nminimum mu_c2:', m[r.index(min(r))])
+    plt.errorbar(m, r, fmt='-ok', lw=1, yerr=0)
+    # plt.errorbar(m, r, fmt='-ok', lw=1, yerr=total_error())
     plt.xlabel(r'$m_μc^2(MeV)$')
     plt.ylabel('Sum of Squared Residuals')
     plt.tight_layout()

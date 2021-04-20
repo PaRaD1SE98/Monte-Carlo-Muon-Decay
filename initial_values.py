@@ -12,8 +12,13 @@ t_gap = 0.635  # cm
 # plate_num = 21
 
 # MUON
-mu_c2 = 120  # MeV
+mu_c2 = 100  # MeV
 theta_max = 30  # 0 ~ 90
 
 # Simulation times
-RUN_NUM = 430
+RUN_NUM = 4300
+
+# Fitting
+START = 60
+STOP = 140
+INTERVAL = 1
